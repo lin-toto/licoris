@@ -64,7 +64,7 @@ void TCPReceiver::waitClient() {
 
     struct sockaddr_in client{};
     int len = sizeof(client);
-    connectFd = accept(socketFd, reinterpret_cast<sockaddr*>(&client), &len);
+    connectFd = accept(socketFd, reinterpret_cast<sockaddr*>(&client), reinterpret_cast<socklen_t*>(&len));
 }
 
 std::string TCPReceiver::receive() const {
